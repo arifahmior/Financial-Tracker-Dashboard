@@ -52,14 +52,14 @@ const currencies = [
 ]
 
 const initialCategories: BudgetCategory[] = [
-  { id: "1", name: "Food & Groceries", allocated: 800, spent: 650, color: "#3b82f6" },
-  { id: "2", name: "Transportation", allocated: 300, spent: 280, color: "#10b981" },
-  { id: "3", name: "Utilities", allocated: 400, spent: 380, color: "#8b5cf6" },
-  { id: "4", name: "Entertainment", allocated: 200, spent: 150, color: "#f59e0b" },
+  { id: "1", name: "Food & Groceries", allocated: 0, spent: 0, color: "#3b82f6" },
+  { id: "2", name: "Transportation", allocated: 0, spent: 0, color: "#10b981" },
+  { id: "3", name: "Utilities", allocated: 0, spent: 0, color: "#8b5cf6" },
+  { id: "4", name: "Entertainment", allocated: 0, spent: 0, color: "#f59e0b" },
 ]
 
 export default function FinancialTracker() {
-  const [totalBudget, setTotalBudget] = useState(3000)
+  const [totalBudget, setTotalBudget] = useState(0)
   const [currency, setCurrency] = useState("MYR")
   const [categories, setCategories] = useState<BudgetCategory[]>(initialCategories)
   const [savedTrackers, setSavedTrackers] = useState<SavedTracker[]>([])
@@ -429,7 +429,9 @@ export default function FinancialTracker() {
             </CardHeader>
             <CardContent>
               <div className="flex justify-start">
-                <div className="text-2xl font-bold text-green-900">{formatCurrency(totalBudget)}</div>
+                <div className="text-2xl font-bold text-green-900">
+                  {totalBudget === 0 ? "--" : formatCurrency(totalBudget)}
+                </div>
               </div>
             </CardContent>
           </Card>
@@ -443,7 +445,7 @@ export default function FinancialTracker() {
             </CardHeader>
             <CardContent>
               <div className={`text-2xl font-bold text-green-900 ${totalSpent > totalBudget ? "text-red-600" : ""}`}>
-                {formatCurrency(totalSpent)}
+                {totalSpent === 0 ? "--" : formatCurrency(totalSpent)}
               </div>
             </CardContent>
           </Card>
@@ -459,7 +461,7 @@ export default function FinancialTracker() {
               <div
                 className={`text-2xl font-bold text-green-900 ${remainingBudget < 0 ? "text-red-600" : "text-green-600"}`}
               >
-                {formatCurrency(remainingBudget)}
+                {totalBudget === 0 ? "--" : formatCurrency(remainingBudget)}
               </div>
             </CardContent>
           </Card>

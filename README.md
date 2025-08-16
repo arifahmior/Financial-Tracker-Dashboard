@@ -1,7 +1,5 @@
 # Financial Tracker
 
-This is the Smart Financial Tracker to ease your financial budget tracing in real time/on the spot. Very simple features to know the status of your financial either Good or Poor financial management.
-
 *Automatically synced with your [v0.app](https://v0.app) deployments*
 
 [![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)](https://vercel.com/arifahmiors-projects/v0-financial-tracker)
